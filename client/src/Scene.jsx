@@ -3,14 +3,14 @@ import { useRef, useEffect, useState } from "react"
 import { PerspectiveCamera } from "@react-three/drei"
 
 function Scene() {
-  let [cameraPosition, setCameraPosition] = useState(0)
+  let [cameraPositionY, setCameraPositionY] = useState(0)
   const cubeRef = useRef()
 
   useFrame((state, delta) => 
   {
     
-      cubeRef.current.rotation.y += delta * 0.15
-      cubeRef.current.rotation.x += delta * 0.15
+      cubeRef.current.rotation.y += delta * 0.15;
+      cubeRef.current.rotation.x += delta * 0.15;
   })
 
   let scrollY = window.scrollY
@@ -18,19 +18,38 @@ function Scene() {
   useEffect(() => {
     const onScroll = (event) => {
       scrollY = window.scrollY;
-      setCameraPosition(scrollY/200)
+      setCameraPositionY(scrollY/200)
     };
-
       
     window.addEventListener('scroll', onScroll);
-    console.log(scrollY)
     return () => {
       window.removeEventListener('scroll', onScroll);
     }
   }, []);
 
+  const cursor = {}
+  cursor.x = 0
+  cursor.y = 0
+
+  useEffect(() => {
+    const onMouseMove = (event) => {
+      // console.log(event)
+      // cursor.x = event.clientX / 200
+      // cursor.y = event.clientY / 200
+    };
+      
+    window.addEventListener('mousemove', onMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+    }
+  },[])
+
   return (<>
-  <PerspectiveCamera position-y={cameraPosition} > 
+  <PerspectiveCamera 
+  // position-x={cameraPositionX}
+  position-y={cameraPositionY}
+  > 
     <mesh scale={1} ref={cubeRef}>
       <boxGeometry />
       <meshStandardMaterial />
