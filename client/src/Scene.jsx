@@ -1,32 +1,44 @@
 import { useFrame } from "@react-three/fiber"
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
+import { PerspectiveCamera } from "@react-three/drei"
 
 function Scene() {
+  let [cameraPosition, setCameraPosition] = useState(0)
   const cubeRef = useRef()
 
   useFrame((state, delta) => 
   {
-      // console.log(state.camera)
-      // console.log(state.clock.elapsedTime)
-      // const angle = state.clock.elapsedTime/4
-      // state.camera.position.x = Math.sin(angle)*8
-      // state.camera.position.z = Math.cos(angle)*8
-      // state.camera.lookAt(0,0,0)
-      
+    
       cubeRef.current.rotation.y += delta * 0.15
       cubeRef.current.rotation.x += delta * 0.15
-      // groupRef.current.rotation.y +=delta*0.01
   })
 
+  let scrollY = window.scrollY
+
+  useEffect(() => {
+    const onScroll = (event) => {
+      scrollY = window.scrollY;
+      setCameraPosition(scrollY/200)
+    };
+
+      
+    window.addEventListener('scroll', onScroll);
+    console.log(scrollY)
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    }
+  }, []);
+
   return (<>
+  <PerspectiveCamera position-y={cameraPosition} > 
     <mesh scale={1} ref={cubeRef}>
       <boxGeometry />
       <meshStandardMaterial />
     </mesh> 
     <directionalLight position={[1, 0.3, 0]}/>
     <ambientLight intensity={0.1}/>
+  </PerspectiveCamera>
   </>
-
   )
 }
 
