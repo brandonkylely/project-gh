@@ -1,9 +1,14 @@
-
-import './App.css'
+// import 
 
 function Scene() {
 
-  return (<></>
+  return (<>
+    <mesh scale={3}>
+      <sphereGeometry />
+      <meshStandardMaterial />
+    </mesh> 
+    <ambientLight intensity={0.1}/>
+  </>
 
   )
 }

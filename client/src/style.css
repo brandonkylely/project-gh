@@ -1,0 +1,26 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html
+{
+    background: #455f66;
+}
+
+.webgl
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.pagetest
+{
+  position: absolute;
+  /* display:flex; */
+  width: 20;
+  font-size: larger;
+}
