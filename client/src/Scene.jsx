@@ -1,7 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber"
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { useRef, useEffect, useState } from "react"
-import { Float, Html, PerspectiveCamera } from "@react-three/drei"
+import { Float, Html, PerspectiveCamera, OrbitControls } from "@react-three/drei"
 import { useControls } from 'leva'
 import { Perf } from "r3f-perf"
 
@@ -16,13 +16,18 @@ function Scene() {
     Visible: true
 })
 
-  const { position1, position2 } = useControls({
+  const { position1, position2, rotation1 } = useControls({
     position1:
     {
         value: { x: 0, y: 0, z: 0 },
         step: 0.01
     },
     position2:
+    {
+        value: { x: 0, y: 0, z: 0 },
+        step: 0.01
+    },
+    rotation1:
     {
         value: { x: 0, y: 0, z: 0 },
         step: 0.01
@@ -70,6 +75,7 @@ function Scene() {
   },[])
 
   return (<>
+  {/* <OrbitControls></OrbitControls> */}
 
   {visible && <Perf position="top-left" />}
 
@@ -86,15 +92,17 @@ function Scene() {
     <ambientLight intensity={0.1}/>
     {/* <Float> */}
     <group>
-      <Html
+      {/* <Html
       transform
       wrapperClass="htmlScreen"
       distanceFactor={ 1.0 }
-      position={ [ 0, 1.56, - 1.4 ] }
-      rotation-x={ - 0.256 }
+      // position={ [ position1.x, position1.y, position1.z ] }
+      // rotation={ [rotation1.x, rotation1.y, rotation1.z] }
+      position={[10.23, 3.59, -8.98]}
+      rotation={[0.18, -0.14, 0]}
       >
         <iframe src="https://www.anaxi.app/" />
-      </Html>
+      </Html> */}
       <primitive 
       scale={1.2}
       object={ deskModel.scene }

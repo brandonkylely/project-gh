@@ -23,14 +23,37 @@ html
     /* height: 100%; */
 }
 
-.page
+.pageHero
 {
   position: relative;
-  /* display:flex; */
-  width: 100vw;
-  height: 100vh;
-  font-size: larger;
-  z-index: 1;
+  display: block;
+  height: 85vh;
+  width: 50vw;
+  padding-top: 14%;
+  padding-left: 5%;
+  padding-right: 10%;
+}
+
+.pageLeft
+{
+  position: relative;
+  display: flex;
+  height: 65vh;
+  width: 50vw;
+  padding-top: 14%;
+  padding-left: 25%;
+  padding-right: 10%;
+}
+
+.pageRight
+{
+  position: relative;
+  display: flex;
+  height: 65vh;
+  width: 50vw;
+  padding-top: 14%;
+  padding-left: 75%;
+  /* padding-right: 5%; */
 }
 
 .htmlScreen iframe

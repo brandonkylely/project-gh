@@ -1,17 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Page1 from './components/Page1'
 import {Canvas} from '@react-three/fiber'
 import Scene from './Scene'
 import './index.css'
-import Page2 from './components/Page2'
+import PageHero from './PageHero'
+import PageRight from './components/PageRight'
+import PageLeft from './components/PageLeft'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Canvas className='webgl'>
       <Scene />
     </Canvas>
-    <Page1 />
-    <Page2 />
+    <PageHero />
+    <PageRight classes={'font-sigmar'} title={'wake'}/>
+    <PageLeft classes={'font-vt323 text-4xl'} title={'eat'}/>
+    <PageRight classes={'font-sigmar'} title={'read'}/>
   </React.StrictMode>,
 )
