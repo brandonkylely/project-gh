@@ -1,10 +1,10 @@
-function HomePage() {
+function Page1() {
 
-  return (<div className="pagetest">
+  return (<div className="page">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, veritatis.
   </div>
 
   )
 }
 
-export default HomePage
+export default Page1

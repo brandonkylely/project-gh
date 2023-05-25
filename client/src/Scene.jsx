@@ -1,16 +1,21 @@
-import { useFrame } from "@react-three/fiber"
+import { useFrame, useLoader } from "@react-three/fiber"
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { useRef, useEffect, useState } from "react"
-import { PerspectiveCamera } from "@react-three/drei"
+import { Float, Html, PerspectiveCamera } from "@react-three/drei"
+import { Group } from "three"
 
 function Scene() {
   let [cameraPositionY, setCameraPositionY] = useState(0)
   const cubeRef = useRef()
 
+  const deskModel = useLoader(GLTFLoader, './Desk.glb')
+  console.log(deskModel)
+
   useFrame((state, delta) => 
   {
     
-      cubeRef.current.rotation.y += delta * 0.15;
-      cubeRef.current.rotation.x += delta * 0.15;
+    // cubeRef.current.rotation.y += delta * 0.15;
+    // cubeRef.current.rotation.x += delta * 0.15;
   })
 
   let scrollY = window.scrollY
@@ -18,7 +23,8 @@ function Scene() {
   useEffect(() => {
     const onScroll = (event) => {
       scrollY = window.scrollY;
-      setCameraPositionY(scrollY/200)
+      console.log(scrollY);
+      setCameraPositionY(scrollY/200);
     };
       
     window.addEventListener('scroll', onScroll);
@@ -50,12 +56,25 @@ function Scene() {
   // position-x={cameraPositionX}
   position-y={cameraPositionY}
   > 
-    <mesh scale={1} ref={cubeRef}>
-      <boxGeometry />
-      <meshStandardMaterial />
-    </mesh> 
+    {/* <mesh scale={1} ref={cubeRef}> */}
+      {/* <boxGeometry /> */}
+      {/* <meshStandardMaterial /> */}
+    {/* </mesh>  */}
+
     <directionalLight position={[1, 0.3, 0]}/>
     <ambientLight intensity={0.1}/>
+    {/* <Float> */}
+    <group>
+      <Html>
+      </Html>
+      <primitive 
+      scale={1.2}
+      object={ deskModel.scene }
+      position={[2.0, -0.4, 0.9]}
+      rotation={[Math.PI*0.1,Math.PI*0.5, 0]} 
+      />
+    </group>
+    {/* </Float> */}
   </PerspectiveCamera>
   </>
   )
