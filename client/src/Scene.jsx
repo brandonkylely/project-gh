@@ -11,29 +11,13 @@ function Scene() {
   const cubeRef = useRef()
 
   const deskModel = useLoader(GLTFLoader, './Desk.glb')
-  console.log(deskModel)
+  // console.log(deskModel)
 
   const { visible } = useControls({
-    Visible: true
-})
-
-  const { position1, position2, rotation1 } = useControls({
-    position1:
-    {
-        value: { x: 0, y: 0, z: 0 },
-        step: 0.01
-    },
-    position2:
-    {
-        value: { x: 0, y: 0, z: 0 },
-        step: 0.01
-    },
-    rotation1:
-    {
-        value: { x: 0, y: 0, z: 0 },
-        step: 0.01
-    }
+    visible: false
   })
+
+
 
   useFrame((state, delta) => 
   {
@@ -88,16 +72,11 @@ function Scene() {
       {/* <meshStandardMaterial /> */}
     {/* </mesh>  */}
 
-    <directionalLight position={[1, 0.3, 0]}/>
     <ambientLight intensity={0.1}/>
     <group>
-      {/* <primitive 
-      scale={1.2}
-      object={ deskModel.scene }
-      position={[2.0, -0.4, 0.9]}
-      rotation={[Math.PI*0.1,Math.PI*0.5, 0]} 
-      /> */}
-      <Model modelUrl={'./Desk.glb'} scale={1.2} position={[2.0, -0.4, 0.9]} rotation={[Math.PI*0.1,Math.PI*0.5, 0]}/>
+    <directionalLight position={[1, 0.3, 0]}/>
+      <Model modelUrl={'./Desk.glb'} scale={1.2} position={[2.0, -0.4, 0.9]} rotation={[Math.PI*0.1, Math.PI*0.5, 0]} 
+      debug={true}/>
     </group>
   </PerspectiveCamera>
   </>
