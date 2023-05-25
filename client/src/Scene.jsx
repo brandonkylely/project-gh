@@ -75,9 +75,15 @@ function Scene() {
     <ambientLight intensity={0.1}/>
     <group>
     <directionalLight position={[1, 0.3, 0]}/>
-      <Model modelUrl={'./Desk.glb'} scale={1.2} position={[2.0, -0.4, 0.9]} rotation={[Math.PI*0.1, Math.PI*0.5, 0]} 
-      debug={true}/>
+      <Model name={'Desk'} modelUrl={'./Desk.glb'} 
+      scale={1.2} position={[2.0, -0.4, 0.9]} rotation={[Math.PI*0.1, Math.PI*0.5, 0]} 
+      debug={false}/>
     </group>
+    {/* <group>
+      <Model name={'Corkboard'} modelUrl={'./Wall-Corkboard.glb'} 
+      scale={2.5} position={[-1.77,-3.74,2.63]} rotation={[0, 0.36, 0]} 
+      debug={false}/>
+    </group> */}
   </PerspectiveCamera>
   </>
   )

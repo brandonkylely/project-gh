@@ -6,7 +6,7 @@ function Model(props) {
   const model = useLoader(GLTFLoader, props.modelUrl)
 
 
-  const { scale1, position1, rotation1 } = useControls({
+  const { scale1, position1, rotation1 } = useControls(props.name, {
     scale1:
     {
       value: 1,
