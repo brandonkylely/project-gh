@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import Page1 from './components/Page1'
 import {Canvas} from '@react-three/fiber'
 import Scene from './Scene'
-import './style.css'
+import './index.css'
 import Page2 from './components/Page2'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

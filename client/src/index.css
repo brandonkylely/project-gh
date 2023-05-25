@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *
 {
     margin: 0;
@@ -27,4 +31,11 @@ html
   height: 100vh;
   font-size: larger;
   z-index: 1;
+}
+
+.htmlScreen iframe
+{
+  width: 1024px;
+  height: 670px;
+  border: none;
 }
