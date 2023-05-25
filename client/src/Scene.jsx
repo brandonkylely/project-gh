@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react"
 import { Float, Html, PerspectiveCamera, OrbitControls } from "@react-three/drei"
 import { useControls } from 'leva'
 import { Perf } from "r3f-perf"
+import Model from "./components/Model"
 
 function Scene() {
   let [cameraPositionY, setCameraPositionY] = useState(0)
@@ -36,7 +37,6 @@ function Scene() {
 
   useFrame((state, delta) => 
   {
-    
     // cubeRef.current.rotation.y += delta * 0.15;
     // cubeRef.current.rotation.x += delta * 0.15;
   })
@@ -90,27 +90,15 @@ function Scene() {
 
     <directionalLight position={[1, 0.3, 0]}/>
     <ambientLight intensity={0.1}/>
-    {/* <Float> */}
     <group>
-      {/* <Html
-      transform
-      wrapperClass="htmlScreen"
-      distanceFactor={ 1.0 }
-      // position={ [ position1.x, position1.y, position1.z ] }
-      // rotation={ [rotation1.x, rotation1.y, rotation1.z] }
-      position={[10.23, 3.59, -8.98]}
-      rotation={[0.18, -0.14, 0]}
-      >
-        <iframe src="https://www.anaxi.app/" />
-      </Html> */}
-      <primitive 
+      {/* <primitive 
       scale={1.2}
       object={ deskModel.scene }
       position={[2.0, -0.4, 0.9]}
       rotation={[Math.PI*0.1,Math.PI*0.5, 0]} 
-      />
+      /> */}
+      <Model modelUrl={'./Desk.glb'} scale={1.2} position={[2.0, -0.4, 0.9]} rotation={[Math.PI*0.1,Math.PI*0.5, 0]}/>
     </group>
-    {/* </Float> */}
   </PerspectiveCamera>
   </>
   )

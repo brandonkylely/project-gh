@@ -4,8 +4,8 @@ import {Canvas} from '@react-three/fiber'
 import Scene from './Scene'
 import './index.css'
 import PageHero from './PageHero'
-import PageRight from './components/PageRight'
 import PageLeft from './components/PageLeft'
+import PageRight from './components/PageRight'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
